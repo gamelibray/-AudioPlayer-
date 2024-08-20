@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvi1pt7awtgrg"]
+
+[ext_resource type="PackedScene" uid="uid://dgsqorhi412r8" path="res://Player/Scene/audio_player.tscn" id="1_xjael"]
+
+[node name="Root" type="Control"]
+custom_minimum_size = Vector2(648, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioPlayer" parent="." instance=ExtResource("1_xjael")]
+custom_minimum_size = Vector2(648, 1152)
+layout_mode = 1

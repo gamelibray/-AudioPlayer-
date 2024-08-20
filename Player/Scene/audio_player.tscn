@@ -1,0 +1,698 @@
+[gd_scene load_steps=36 format=3 uid="uid://dgsqorhi412r8"]
+
+[ext_resource type="Texture2D" uid="uid://krbq0gegsxhh" path="res://assets/texture/button/music.png" id="1_fxusc"]
+[ext_resource type="Texture2D" uid="uid://hqxkorq854g7" path="res://assets/texture/button/repeat.png" id="1_gc7cj"]
+[ext_resource type="Script" path="res://Player/Script/audio_player.gd" id="1_vefj5"]
+[ext_resource type="Texture2D" uid="uid://skmwa5525k41" path="res://assets/texture/button/fast-backward.png" id="2_kjjc6"]
+[ext_resource type="Texture2D" uid="uid://c830j138j1d72" path="res://assets/texture/button/fast-forward.png" id="2_l7exh"]
+[ext_resource type="Texture2D" uid="uid://dfrocwdbb7rba" path="res://assets/texture/button/play.png" id="3_86im8"]
+[ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_bud03"]
+[ext_resource type="Texture2D" uid="uid://dpcqioeo1jhbf" path="res://assets/texture/button/shuffle.png" id="5_7ixo4"]
+[ext_resource type="PackedScene" uid="uid://duf8td40wya8v" path="res://Player/Scene/Song.tscn" id="8_cg0s7"]
+[ext_resource type="Script" path="res://Player/Script/TrackList.gd" id="8_fd3hv"]
+[ext_resource type="Script" path="res://Player/Scene/show_spectrum.gd" id="11_8c8x4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvidq"]
+bg_color = Color(0.112073, 0.140574, 0.169078, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.788235)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol04s"]
+bg_color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh4j8"]
+bg_color = Color(0.0706561, 0.0922113, 0.113766, 1)
+border_width_bottom = 5
+border_color = Color(0.478431, 0.478431, 0.478431, 0)
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nud4j"]
+bg_color = Color(0, 0, 0, 0.0745098)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyd0o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whs74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iifei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycy5e"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_top = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmlch"]
+bg_color = Color(0.729412, 0.121569, 0.117647, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0d8qy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnwh3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67dhu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grbo7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hu3x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65hq1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqj3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5rhk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mrvc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iil7v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivhcj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmkry"]
+
+[sub_resource type="Animation" id="Animation_cgbqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShowSpectrum:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShowSpectrum:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/MarginContainer/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hpgty"]
+resource_name = "track_list"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShowSpectrum:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 2.17993, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShowSpectrum:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/MarginContainer/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.450856, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bijw"]
+_data = {
+"RESET": SubResource("Animation_cgbqf"),
+"track_list": SubResource("Animation_hpgty")
+}
+
+[node name="AudioPlayer" type="Control" node_paths=PackedStringArray("label_name")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vefj5")
+label_name = NodePath("List/Control2/LabelWithScript")
+
+[node name="Title" type="Label" parent="."]
+self_modulate = Color(0.525058, 0.592755, 0.66657, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Audio Player"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = -313.0
+offset_right = 252.0
+offset_bottom = -113.0
+grow_vertical = 0
+rotation = -0.384854
+texture = ExtResource("1_fxusc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 60.0
+offset_top = 608.0
+offset_right = 260.0
+offset_bottom = 808.0
+rotation = 0.355379
+texture = ExtResource("1_fxusc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 652.0
+offset_right = -16.0001
+offset_bottom = 852.0
+grow_horizontal = 0
+rotation = -0.119165
+texture = ExtResource("1_fxusc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="Panel" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(340, 340)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -170.0
+offset_right = 170.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvidq")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ColorRect"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_fxusc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 620.0
+offset_bottom = 625.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ol04s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["player"]]
+
+[node name="List" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -655.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh4j8")
+
+[node name="TextureRect3" type="TextureRect" parent="List"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fxusc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Track" type="Panel" parent="List"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 45.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nud4j")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="List/Track"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="List/Track/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TrackList" type="VBoxContainer" parent="List/Track/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+script = ExtResource("8_fd3hv")
+
+[node name="Panel" parent="List/Track/ScrollContainer/MarginContainer/TrackList" node_paths=PackedStringArray("label", "label_number", "texture") instance=ExtResource("8_cg0s7")]
+layout_mode = 2
+label = NodePath("MarginContainer/HBoxContainer/LabelWithScript")
+label_number = NodePath("MarginContainer/HBoxContainer/Label")
+texture = NodePath("MarginContainer/TextureRect")
+
+[node name="Panel2" parent="List/Track/ScrollContainer/MarginContainer/TrackList" node_paths=PackedStringArray("label", "label_number", "texture") instance=ExtResource("8_cg0s7")]
+layout_mode = 2
+label = NodePath("../Panel/MarginContainer/HBoxContainer/LabelWithScript")
+label_number = NodePath("../Panel/MarginContainer/HBoxContainer/Label")
+texture = NodePath("MarginContainer/TextureRect")
+
+[node name="Label" type="Label" parent="List"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Sounds"
+
+[node name="Control2" type="Control" parent="List"]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="LabelWithScript" type="Label" parent="List/Control2"]
+self_modulate = Color(0.604192, 0.666941, 0.735537, 1)
+custom_minimum_size = Vector2(340, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = -60.0
+offset_right = -24.0
+offset_bottom = -15.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_bud03")
+_max_steps = 10
+_size_per_step = 3
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 40
+_current_font_size = 40
+_last_size_state = 1
+
+[node name="Interact" type="Control" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -152.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Interact"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="Interact/Control"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.0
+offset_top = -357.0
+offset_right = 102.0
+offset_bottom = -322.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Fffffffffffffffffffhot"
+
+[node name="HSlider" type="HSlider" parent="Interact/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_uyd0o")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_whs74")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_iifei")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ycy5e")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lmlch")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_lmlch")
+value = 10.0
+
+[node name="Label" type="Label" parent="Interact/Control"]
+self_modulate = Color(0.603922, 0.666667, 0.737255, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "3:47"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Interact/Control"]
+self_modulate = Color(0.603922, 0.666667, 0.737255, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "1:12"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interact"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = 10.0
+offset_right = 324.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Loop" type="Button" parent="Interact/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0d8qy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dnwh3")
+toggle_mode = true
+icon = ExtResource("1_gc7cj")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="BackSound" type="Button" parent="Interact/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_67dhu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_grbo7")
+icon = ExtResource("2_kjjc6")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Play_Pause" type="Button" parent="Interact/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4hu3x")
+theme_override_styles/normal = SubResource("StyleBoxFlat_65hq1")
+icon = ExtResource("3_86im8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="UpSound" type="Button" parent="Interact/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dqj3n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r5rhk")
+icon = ExtResource("2_l7exh")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Rand" type="Button" parent="Interact/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3mrvc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iil7v")
+toggle_mode = true
+icon = ExtResource("5_7ixo4")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 171.0
+offset_top = 81.0
+offset_right = 515.0
+offset_bottom = 426.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ivhcj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmkry")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5bijw")
+}
+autoplay = "RESET"
+
+[node name="ShowSpectrum" type="Control" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_top = 140.0
+offset_right = 125.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("11_8c8x4")
+
+[node name="Info" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 147.0
+offset_bottom = 276.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicPath" type="Label" parent="Info/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "MusicPath:"
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_bud03")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 16
+_current_font_size = 16
+_last_size_state = 1
+
+[node name="Hide" type="Label" parent="Info/VBoxContainer"]
+layout_mode = 2
+text = "H - Hide"
+
+[node name="Label" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.5
+offset_top = -23.0
+offset_right = 53.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "ClickHere ->"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="drag_ended" from="Interact/Control/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="drag_started" from="Interact/Control/HSlider" to="." method="_on_h_slider_drag_started"]
+[connection signal="gui_input" from="Interact/Control/HSlider" to="." method="_on_h_slider_gui_input"]
+[connection signal="value_changed" from="Interact/Control/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="Interact/HBoxContainer/Loop" to="." method="_on_loop_toggled"]
+[connection signal="pressed" from="Interact/HBoxContainer/BackSound" to="." method="_on_back_sound_pressed"]
+[connection signal="pressed" from="Interact/HBoxContainer/Play_Pause" to="." method="_on_play_pause_pressed"]
+[connection signal="pressed" from="Interact/HBoxContainer/UpSound" to="." method="_on_button_4_pressed"]
+[connection signal="toggled" from="Interact/HBoxContainer/Rand" to="." method="_on_rand_toggled"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

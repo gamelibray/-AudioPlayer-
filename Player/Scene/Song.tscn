@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://duf8td40wya8v"]
+
+[ext_resource type="Script" path="res://Player/Script/Song.gd" id="1_7x8m7"]
+[ext_resource type="Texture2D" uid="uid://dfrocwdbb7rba" path="res://assets/texture/button/play.png" id="1_uitk4"]
+[ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="2_358mr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvpur"]
+bg_color = Color(0.478431, 0.478431, 0.478431, 0)
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[node name="Panel" type="Panel" node_paths=PackedStringArray("label", "label_number", "texture")]
+custom_minimum_size = Vector2(0, 70)
+offset_left = 12.0
+offset_right = 642.0
+offset_bottom = 70.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvpur")
+script = ExtResource("1_7x8m7")
+label = NodePath("MarginContainer/HBoxContainer/LabelWithScript")
+label_number = NodePath("MarginContainer/HBoxContainer/Label")
+texture = NodePath("MarginContainer/TextureRect")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(0.77895, 0.819947, 0.861644, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "1"
+
+[node name="LabelWithScript" type="Label" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color(0.663322, 0.719682, 0.781423, 1)
+custom_minimum_size = Vector2(520, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("2_358mr")
+_max_steps = 10
+_size_per_step = 3
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 40
+_current_font_size = 40
+_last_size_state = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("1_uitk4")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
